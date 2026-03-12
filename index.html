@@ -607,6 +607,44 @@ body.nepali .rand-btn { font-family: 'Annapurna SIL', serif; }
 </div>
 
 <script>
+
+ //---------------------------------------------------
+//disable shortcut for View source code and inspect
+//---------------------------------------------------
+// Disable right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Disable specific keyboard shortcuts
+  document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.key === 'F12') {
+      e.preventDefault();
+    }
+    // Ctrl+Shift+I (Inspect Element)
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+    }
+    // Ctrl+Shift+J (Console)
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+      e.preventDefault();
+    }
+    // Ctrl+U (View Source)
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+    }
+    // Ctrl+Shift+C (Inspect in some browsers)
+    if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+      e.preventDefault();
+    }
+    // Ctrl+S (Save Page) – optional
+    if (e.ctrlKey && e.key === 's') {
+      e.preventDefault();
+    }
+  });
+
+  
 const DISTRICTS = [{"id":"achham","name":"Achham","province":"Sudurpashchim","area":1680,"pop":257477,"hq":"Mangalsen"},{"id":"arghakhanchi","name":"Arghakhanchi","province":"Lumbini","area":1193,"pop":197632,"hq":"Sandhikharka"},{"id":"baglung","name":"Baglung","province":"Gandaki","area":1784,"pop":268613,"hq":"Baglung"},{"id":"baitadi","name":"Baitadi","province":"Sudurpashchim","area":1519,"pop":254099,"hq":"Dasharathchand"},{"id":"bajhang","name":"Bajhang","province":"Sudurpashchim","area":3422,"pop":195159,"hq":"Chainpur"},{"id":"bajura","name":"Bajura","province":"Sudurpashchim","area":2188,"pop":134912,"hq":"Martadi"},{"id":"banke","name":"Banke","province":"Lumbini","area":2337,"pop":491313,"hq":"Nepalgunj"},{"id":"bara","name":"Bara","province":"Madhesh","area":1190,"pop":756535,"hq":"Kalaiya"},{"id":"bardiya","name":"Bardiya","province":"Lumbini","area":2025,"pop":426576,"hq":"Gulariya"},{"id":"bhaktapur","name":"Bhaktapur","province":"Bagmati","area":119,"pop":304651,"hq":"Bhaktapur"},{"id":"bhojpur","name":"Bhojpur","province":"Koshi","area":1507,"pop":183639,"hq":"Bhojpur"},{"id":"chitawan","name":"Chitwan","province":"Bagmati","area":2238,"pop":579984,"hq":"Bharatpur"},{"id":"dadeldhura","name":"Dadeldhura","province":"Sudurpashchim","area":1538,"pop":142094,"hq":"Dadeldhura"},{"id":"dailekh","name":"Dailekh","province":"Karnali","area":1502,"pop":261770,"hq":"Narayan"},{"id":"dang","name":"Dang","province":"Lumbini","area":2955,"pop":545779,"hq":"Ghorahi"},{"id":"darchula","name":"Darchula","province":"Sudurpashchim","area":2322,"pop":133913,"hq":"Darchula"},{"id":"dhading","name":"Dhading","province":"Bagmati","area":1926,"pop":336067,"hq":"Nilkantha"},{"id":"dhankuta","name":"Dhankuta","province":"Koshi","area":891,"pop":163412,"hq":"Dhankuta"},{"id":"dhanusha","name":"Dhanusha","province":"Madhesh","area":1180,"pop":754777,"hq":"Janakpur"},{"id":"dolakha","name":"Dolakha","province":"Bagmati","area":2191,"pop":186557,"hq":"Charikot"},{"id":"dolpa","name":"Dolpa","province":"Karnali","area":7889,"pop":36700,"hq":"Dunai"},{"id":"doti","name":"Doti","province":"Sudurpashchim","area":2025,"pop":207987,"hq":"Dipayal"},{"id":"gorkha","name":"Gorkha","province":"Gandaki","area":3610,"pop":271061,"hq":"Gorkha"},{"id":"gulmi","name":"Gulmi","province":"Lumbini","area":1149,"pop":280160,"hq":"Tamghas"},{"id":"humla","name":"Humla","province":"Karnali","area":5655,"pop":50858,"hq":"Simkot"},{"id":"ilam","name":"Ilam","province":"Koshi","area":1703,"pop":290254,"hq":"Ilam"},{"id":"jajarkot","name":"Jajarkot","province":"Karnali","area":2230,"pop":171304,"hq":"Khalanga"},{"id":"jhapa","name":"Jhapa","province":"Koshi","area":1606,"pop":812650,"hq":"Chandragadhi"},{"id":"jumla","name":"Jumla","province":"Karnali","area":2531,"pop":108921,"hq":"Jumla"},{"id":"kabhrepalanchok","name":"Kavrepalanchok","province":"Bagmati","area":1396,"pop":381937,"hq":"Dhulikhel"},{"id":"kailali","name":"Kailali","province":"Sudurpashchim","area":3235,"pop":775709,"hq":"Dhangadhi"},{"id":"kalikot","name":"Kalikot","province":"Karnali","area":1741,"pop":136948,"hq":"Manma"},{"id":"kanchanpur","name":"Kanchanpur","province":"Sudurpashchim","area":1610,"pop":451248,"hq":"Mahendranagar"},{"id":"kapilbastu","name":"Kapilvastu","province":"Lumbini","area":1738,"pop":571936,"hq":"Taulihawa"},{"id":"kaski","name":"Kaski","province":"Gandaki","area":2017,"pop":492098,"hq":"Pokhara"},{"id":"kathmandu","name":"Kathmandu","province":"Bagmati","area":395,"pop":1744240,"hq":"Kathmandu"},{"id":"khotang","name":"Khotang","province":"Koshi","area":1591,"pop":206312,"hq":"Diktel"},{"id":"lalitpur","name":"Lalitpur","province":"Bagmati","area":385,"pop":468132,"hq":"Lalitpur"},{"id":"lamjung","name":"Lamjung","province":"Gandaki","area":1692,"pop":167724,"hq":"Besisahar"},{"id":"mahottari","name":"Mahottari","province":"Madhesh","area":1002,"pop":627580,"hq":"Jaleshwar"},{"id":"makawanpur","name":"Makwanpur","province":"Bagmati","area":2426,"pop":420477,"hq":"Hetauda"},{"id":"manang","name":"Manang","province":"Gandaki","area":2246,"pop":6538,"hq":"Chame"},{"id":"morang","name":"Morang","province":"Koshi","area":1855,"pop":967514,"hq":"Biratnagar"},{"id":"mugu","name":"Mugu","province":"Karnali","area":3535,"pop":55286,"hq":"Gamgadhi"},{"id":"mustang","name":"Mustang","province":"Gandaki","area":3573,"pop":13452,"hq":"Jomsom"},{"id":"myagdi","name":"Myagdi","province":"Gandaki","area":2297,"pop":113641,"hq":"Beni"},{"id":"nawalparasi_e","name":"Nawalpur","province":"Gandaki","area":1634,"pop":388269,"hq":"Kawasoti"},{"id":"nawalparasi_w","name":"Parasi","province":"Lumbini","area":1282,"pop":390414,"hq":"Parasi"},{"id":"nuwakot","name":"Nuwakot","province":"Bagmati","area":1121,"pop":277471,"hq":"Bidur"},{"id":"okhaldhunga","name":"Okhaldhunga","province":"Koshi","area":1071,"pop":147984,"hq":"Okhaldhunga"},{"id":"palpa","name":"Palpa","province":"Lumbini","area":1373,"pop":261180,"hq":"Tansen"},{"id":"panchthar","name":"Panchthar","province":"Koshi","area":1538,"pop":191817,"hq":"Phidim"},{"id":"parbat","name":"Parbat","province":"Gandaki","area":494,"pop":146590,"hq":"Kushma"},{"id":"parsa","name":"Parsa","province":"Madhesh","area":1353,"pop":601017,"hq":"Birgunj"},{"id":"pyuthan","name":"Pyuthan","province":"Lumbini","area":1309,"pop":228102,"hq":"Pyuthan"},{"id":"ramechhap","name":"Ramechhap","province":"Bagmati","area":1546,"pop":202646,"hq":"Manthali"},{"id":"rasuwa","name":"Rasuwa","province":"Bagmati","area":1544,"pop":43300,"hq":"Dhunche"},{"id":"rautahat","name":"Rautahat","province":"Madhesh","area":1126,"pop":686722,"hq":"Gaur"},{"id":"rolpa","name":"Rolpa","province":"Lumbini","area":1879,"pop":224506,"hq":"Liwang"},{"id":"rukum_e","name":"Rukum East","province":"Lumbini","area":1161,"pop":91456,"hq":"Rukumkot"},{"id":"rukum_w","name":"Rukum West","province":"Karnali","area":2877,"pop":90936,"hq":"Musikot"},{"id":"rupandehi","name":"Rupandehi","province":"Lumbini","area":1360,"pop":880196,"hq":"Bhairahawa"},{"id":"salyan","name":"Salyan","province":"Karnali","area":1462,"pop":242444,"hq":"Salyan"},{"id":"sankhuwasabha","name":"Sankhuwasabha","province":"Koshi","area":3480,"pop":162148,"hq":"Khandbari"},{"id":"saptari","name":"Saptari","province":"Madhesh","area":1363,"pop":639284,"hq":"Rajbiraj"},{"id":"sarlahi","name":"Sarlahi","province":"Madhesh","area":1259,"pop":769729,"hq":"Malangwa"},{"id":"sindhuli","name":"Sindhuli","province":"Bagmati","area":2491,"pop":296192,"hq":"Sindhulimadi"},{"id":"sindhupalchok","name":"Sindhupalchok","province":"Bagmati","area":2542,"pop":287798,"hq":"Chautara"},{"id":"siraha","name":"Siraha","province":"Madhesh","area":1188,"pop":637761,"hq":"Siraha"},{"id":"solukhumbu","name":"Solukhumbu","province":"Koshi","area":3312,"pop":105886,"hq":"Salleri"},{"id":"sunsari","name":"Sunsari","province":"Koshi","area":1257,"pop":762950,"hq":"Inaruwa"},{"id":"surkhet","name":"Surkhet","province":"Karnali","area":2451,"pop":350804,"hq":"Birendranagar"},{"id":"syangja","name":"Syangja","province":"Gandaki","area":1164,"pop":289148,"hq":"Syangja"},{"id":"tanahu","name":"Tanahu","province":"Gandaki","area":1546,"pop":323288,"hq":"Damauli"},{"id":"taplejung","name":"Taplejung","province":"Koshi","area":3646,"pop":127461,"hq":"Taplejung"},{"id":"terhathum","name":"Terhathum","province":"Koshi","area":679,"pop":112483,"hq":"Myanglung"},{"id":"udayapur","name":"Udayapur","province":"Koshi","area":2063,"pop":317532,"hq":"Gaighat"}];
 const PROV_COLORS = {
   "Koshi":"#e8a838","Madhesh":"#5fa85f","Bagmati":"#3ba8d4",
